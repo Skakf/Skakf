@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vmware-tips]]></title>
+    <url>%2F2018%2F09%2F17%2Fvmware-tips%2F</url>
+    <content type="text"><![CDATA[问题：vmware虚拟机启动时遇到弹窗：“二进制转换与此平台长模式不兼容……” 原因：一般是由于电脑系统的 Virtualization Technology虚拟化技术功能 关闭导致的 解决方法：1.开机时按F2进入bios界面2.选择Configuration选项，将其中 Intel Virtual Technology由Disabled改为Enabled3.按F10，保存并退出，即可开启VT虚拟化功能4.保存后会自动重启电脑，之后就OK啦]]></content>
+      <tags>
+        <tag>Problem&amp;Solution</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[萌新入坑]]></title>
     <url>%2F2018%2F09%2F16%2F%E8%90%8C%E6%96%B0%E5%85%A5%E5%9D%91%2F</url>
     <content type="text"><![CDATA[不好意思啦 刚刚开始搭网站 不完善的地方 还请多多包涵！]]></content>
