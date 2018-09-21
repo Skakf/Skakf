@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu14.04下，利用QEMU+gdb调试Linux0.11内核]]></title>
+    <url>%2F2018%2F09%2F21%2FLinux0-11-debug-with-qemu%2F</url>
+    <content type="text"><![CDATA[##步骤： 安装Ubuntu虚拟机 搭建调试环境 结合QEMU、gdb，开始调试 ##具体流程：1.安装Ubuntu虚拟机环境：VMware12，Ubuntu14.04 2.搭建调试环境1)安装必要依赖包（因为我是新安装的干净Ubuntu，里边还缺少常用软件） sudo apt-get update sudo apt-get upgrade (刚开始直接安总是报unable to locate package，应该是需要更新升级一下) sudo apt-get install vim cscope exuberant-ctags build-essential qemu lxterminal 2）下载Linux0.11内核源码到本地https://github.com/yuanxinyu/Linux-0.11 3）解压编译 cd Downloads unzip Linux-0.11-master.zip cd Linux-0.11-master make make start (弹出qemu界面) 4）调试 make debug （再开一个终端） gdb tools/system target remote localhost:1234 directory ./Linux-0.11-master //???设置源码目录 set architecture i8086 set dissamembly-flavor intel 然后似乎就可以gdb调试了？ b *0x7c00 c layout split x /16b 0x7df0 b main 3.gdb调试我还不太熟，每步含义都还要再去学一下 （嗯，先酱，明天继续……） 参考链接：http://blog.chinaunix.net/uid-26299634-id-4943500.htmlhttps://blog.csdn.net/longintchar/article/details/79685055https://github.com/tinyclub/linux-0.11-lab/blob/master/README.md 小结：哇，一开始真的是一脸懵啊，都不知道怎么入手，还好好多大佬都调过啦，还留了教程在网上，参考了几篇博客，也用我三脚猫的功夫仿了个大概，（也还不清楚原理==）目前看上去似乎接下来就是gdb调试代码，一步一步跟着走，看内核怎么运行的了，这块也还需要再看看书然后，听说是gdb版本啊之类的不兼容？所以linux0.11的编译文件啥的有了修改？上边链接里好像是大佬修改好的？等我明天gdb继续调，看别人文档的时候再研究一下（感觉真的好多不会，好多要学啊==大神弟弟说的果然没错）加油！]]></content>
+      <tags>
+        <tag>Linux内核</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vmware-tips]]></title>
     <url>%2F2018%2F09%2F17%2Fvmware-tips%2F</url>
     <content type="text"><![CDATA[问题：vmware虚拟机启动时遇到弹窗：“二进制转换与此平台长模式不兼容……” 原因：一般是由于电脑系统的 Virtualization Technology虚拟化技术功能 关闭导致的 解决方法：1.开机时按F2进入bios界面2.选择Configuration选项，将其中 Intel Virtual Technology由Disabled改为Enabled3.按F10，保存并退出，即可开启VT虚拟化功能4.保存后会自动重启电脑，之后就OK啦]]></content>

@@ -12,7 +12,7 @@
     
     
     
-    <title>tags: 随笔 | Skakf&#39;s blog</title>
+    <title>Ubuntu14.04下，利用QEMU+gdb调试Linux0.11内核 | Skakf&#39;s blog</title>
     <link href=”http://skakf.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -186,19 +186,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://skakf.github.io">Skakf&#39;s blog</a>
         >
-        <span>标签</span>
+        <span>Ubuntu14.04下，利用QEMU+gdb调试Linux0.11内核</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/tags/随笔/index.html">随笔</a>
+                <a href="/2018/09/21/Linux0-11-debug-with-qemu/">Ubuntu14.04下，利用QEMU+gdb调试Linux0.11内核</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Linux内核/">Linux内核</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-09-21
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -206,21 +225,72 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/tags/随笔/index.html">随笔</a>
+                    <a href="/2018/09/21/Linux0-11-debug-with-qemu/">Ubuntu14.04下，利用QEMU+gdb调试Linux0.11内核</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2018-09-21
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Linux内核/">Linux内核</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2018/09/16/萌新入坑/">萌新入坑</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <p>##步骤：</p>
+<ol>
+<li>安装Ubuntu虚拟机</li>
+<li>搭建调试环境</li>
+<li>结合QEMU、gdb，开始调试</li>
+</ol>
+<p>##具体流程：<br>1.安装Ubuntu虚拟机<br>环境：VMware12，Ubuntu14.04</p>
+<p>2.搭建调试环境<br>1)安装必要依赖包<br>（因为我是新安装的干净Ubuntu，里边还缺少常用软件）</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre><p>(刚开始直接安总是报unable to locate package，应该是需要更新升级一下)</p>
+<pre><code>sudo apt-get install vim cscope exuberant-ctags build-essential qemu lxterminal
+</code></pre><p>2）下载Linux0.11内核源码到本地<br><a href="https://github.com/yuanxinyu/Linux-0.11" target="_blank" rel="noopener">https://github.com/yuanxinyu/Linux-0.11</a></p>
+<p>3）解压编译</p>
+<pre><code>cd Downloads
+unzip Linux-0.11-master.zip
+cd Linux-0.11-master
+make
+make start 
+</code></pre><p><img src="image/linux-0.11/make-start.PNG" alt=""><br>(弹出qemu界面)</p>
+<p>4）调试</p>
+<pre><code>make debug
+</code></pre><p><img src="image/linux-0.11/make-debug.PNG" alt=""></p>
+<p>（再开一个终端）</p>
+<pre><code>gdb tools/system
+target remote localhost:1234
+
+directory ./Linux-0.11-master  //???设置源码目录
+set architecture i8086
+set dissamembly-flavor intel
+</code></pre><p><img src="image/linux-0.11/gdb-bootsect.PNG" alt=""></p>
+<p>然后似乎就可以gdb调试了？</p>
+<pre><code>b *0x7c00
+c
+layout split
+x /16b 0x7df0
+b main
+</code></pre><p>3.gdb调试我还不太熟，每步含义都还要再去学一下</p>
+<p>（嗯，先酱，明天继续……）</p>
+<p>参考链接：<br><a href="http://blog.chinaunix.net/uid-26299634-id-4943500.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-26299634-id-4943500.html</a><br><a href="https://blog.csdn.net/longintchar/article/details/79685055" target="_blank" rel="noopener">https://blog.csdn.net/longintchar/article/details/79685055</a><br><a href="https://github.com/tinyclub/linux-0.11-lab/blob/master/README.md" target="_blank" rel="noopener">https://github.com/tinyclub/linux-0.11-lab/blob/master/README.md</a></p>
+<p>小结：<br>哇，一开始真的是一脸懵啊，都不知道怎么入手，还好好多大佬都调过啦，还留了教程在网上，参考了几篇博客，也用我三脚猫的功夫仿了个大概，（也还不清楚原理==）目前看上去似乎接下来就是gdb调试代码，一步一步跟着走，看内核怎么运行的了，这块也还需要再看看书<br>然后，听说是gdb版本啊之类的不兼容？所以linux0.11的编译文件啥的有了修改？上边链接里好像是大佬修改好的？等我明天gdb继续调，看别人文档的时候再研究一下<br>（感觉真的好多不会，好多要学啊==大神弟弟说的果然没错）<br>加油！</p>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -337,23 +407,23 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/tags/随笔/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/09/21/Linux0-11-debug-with-qemu/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
 		<li class="">
-                    <a href="/tags/随笔/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/09/21/Linux0-11-debug-with-qemu/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 <li class="">
-                    <a href="/tags/随笔/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/09/21/Linux0-11-debug-with-qemu/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Linux内核/" style="font-size: 15.655377074859896px;" class="tag-cloud-link">Linux内核</a>
+    <a href="/tags/Linux内核/" style="font-size: 8.193503721354016px;" class="tag-cloud-link">Linux内核</a>
     
-    <a href="/tags/Problem-Solution/" style="font-size: 14.703550143242524px;" class="tag-cloud-link">Problem&amp;Solution</a>
+    <a href="/tags/Problem-Solution/" style="font-size: 10.852089101576448px;" class="tag-cloud-link">Problem&amp;Solution</a>
     
-    <a href="/tags/随笔/" style="font-size: 13.98660257467386px;" class="tag-cloud-link">随笔</a>
+    <a href="/tags/随笔/" style="font-size: 9.325100792040828px;" class="tag-cloud-link">随笔</a>
     
 </div>
 		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
