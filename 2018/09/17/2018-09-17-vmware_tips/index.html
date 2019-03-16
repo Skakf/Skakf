@@ -12,7 +12,7 @@
     
     
     
-    <title>Categories | Skakf&#39;s blog</title>
+    <title>vmware-tips | Skakf&#39;s blog</title>
     <link href=”http://skakf.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -132,7 +132,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/categories">
                         <i class="fa fa-list"></i>分类
                     </a>
@@ -190,21 +190,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <!-- 搜索页面(尽可能接近ZanBlog搜索功能) -->
-
-
+                    
 <article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="http://skakf.github.io">Skakf&#39;s blog</a>
+        >
+        <span>vmware-tips</span>
+    </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/categories/index.html">Categories</a>
+                <a href="/2018/09/17/2018-09-17-vmware_tips/">vmware-tips</a>
             </h1>
         </div>
         <div class="tag-article">
+            
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-09-14
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Problem-Solution/">Problem&amp;Solution</a>
+                
             </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2018-09-17
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -212,19 +229,32 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/categories/index.html">Categories</a>
+                    <a href="/2018/09/17/2018-09-17-vmware_tips/">vmware-tips</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-09-14
+                <i class="fa fa-calendar"></i> 2018-09-17
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Problem-Solution/">Problem&amp;Solution</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
             </p>
         </center>
     </div>
     <div class="content-article">
-        
+        <p>问题：vmware虚拟机启动时遇到弹窗：“二进制转换与此平台长模式不兼容……”</p>
+<p>原因：一般是由于电脑系统的 Virtualization Technology虚拟化技术功能 关闭导致的</p>
+<p>解决方法：<br>1.开机时按F2进入bios界面<br>2.选择<code>Configuration</code>选项，将其中 <code>Intel Virtual Technology</code>由<code>Disabled</code>改为<code>Enabled</code><br>3.按F10，保存并退出，即可开启VT虚拟化功能<br>4.保存后会自动重启电脑，之后就OK啦</p>
+
     </div>
 </article>
-
 
 
                 </div>
@@ -379,25 +409,25 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/categories/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/09/17/2018-09-17-vmware_tips/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
 		<li class="">
-                    <a href="/categories/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/09/17/2018-09-17-vmware_tips/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 <li class="">
-                    <a href="/categories/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/09/17/2018-09-17-vmware_tips/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/随笔/" style="font-size: 15.37108530663435px;" class="tag-cloud-link">随笔</a>
+    <a href="/tags/随笔/" style="font-size: 16.24274559621925px;" class="tag-cloud-link">随笔</a>
     
-    <a href="/tags/缓冲区溢出-实验/" style="font-size: 11.017656978143869px;" class="tag-cloud-link">缓冲区溢出 实验</a>
+    <a href="/tags/缓冲区溢出-实验/" style="font-size: 12.276227217731272px;" class="tag-cloud-link">缓冲区溢出 实验</a>
     
-    <a href="/tags/Linux内核/" style="font-size: 15.168544818167332px;" class="tag-cloud-link">Linux内核</a>
+    <a href="/tags/Linux内核/" style="font-size: 14.098949880454743px;" class="tag-cloud-link">Linux内核</a>
     
-    <a href="/tags/Problem-Solution/" style="font-size: 15.019105230247831px;" class="tag-cloud-link">Problem&amp;Solution</a>
+    <a href="/tags/Problem-Solution/" style="font-size: 10.732767501866167px;" class="tag-cloud-link">Problem&amp;Solution</a>
     
 </div>
 		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
