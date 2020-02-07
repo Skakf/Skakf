@@ -12,7 +12,7 @@
     
     
     
-    <title>tags: 随笔 | Skakf&#39;s blog</title>
+    <title>Skakf&#39;s blog</title>
     <link href=”http://skakf.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -198,19 +198,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-tag">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://skakf.github.io">Skakf&#39;s blog</a>
         >
-        <span>标签</span>
+        <span></span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/tags/随笔/index.html">随笔</a>
+                <a href="/2020/02/07/2020-02-07git 使用笔记/"></a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2020-02-07
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -218,21 +230,109 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/tags/随笔/index.html">随笔</a>
+                    <a href="/2020/02/07/2020-02-07git 使用笔记/"></a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2020-02-07
+            </p>
+            <p>
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-            <a href="/2018/09/16/2018-09-16-萌新入坑/">萌新入坑</a>
-            <br>
-            
-            
-        </div>
+    <div class="content-article">
+        <h1 id="git-使用笔记"><a href="#git-使用笔记" class="headerlink" title="git 使用笔记"></a>git 使用笔记</h1><h2 id="入门篇"><a href="#入门篇" class="headerlink" title="入门篇"></a>入门篇</h2><ol>
+<li><p>github 上创建仓库 GitTest（勾不勾选创建文件readme均可）</p>
+</li>
+<li><p>本地找到合适位置（例如F:）打开 git bash</p>
+</li>
+<li><p>若已有项目代码文件夹，则copy至F:路径下，e.g. GitTest,</p>
+<p>没有就mkdir -&gt; cd</p>
+</li>
+<li><p>git init</p>
+</li>
+<li><p>git status  //（可选）查看状态</p>
+</li>
+<li><p>git add .</p>
+</li>
+<li><p>git commit -m “first commit - add a project”</p>
+</li>
+<li><p>git remote add origin <a href="https://github.com/XXX/xxx.git" target="_blank" rel="noopener">https://github.com/XXX/xxx.git</a></p>
+</li>
+<li><p>git push -u origin master</p>
+</li>
+</ol>
+<h2 id="命令行解释"><a href="#命令行解释" class="headerlink" title="命令行解释"></a>命令行解释</h2><ol start="4">
+<li><p>git init  </p>
+<p>建好一个空仓库以后，多了一个<code>.git</code>的目录。这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。 </p>
+</li>
+<li><p>最开始git status，会发现很多untracked files, git add . 之后就好了</p>
+</li>
+<li><p>git add . </p>
+<p>告诉git，把文件添加到仓库</p>
+</li>
+<li><p>git commit -m “add files” </p>
+<p>告诉git，把文件提交到仓库。 -m后是本次提交的说明，可以用来介绍自己做了哪些改动。</p>
+<p>执行成功后会告诉你多少文件做了哪些改动 </p>
+<p>注：可以分次add，然后一步commit</p>
+<p>即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add file1.txt</span><br><span class="line">$ git add file2.txt file3.txt</span><br><span class="line">$ git commit -m &quot;add 3 files.&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git remote add origin <a href="https://github.com/XXX/xxx.git" target="_blank" rel="noopener">https://github.com/XXX/xxx.git</a></p>
+<p>①关于本命令</p>
+<p>把已有的本地仓库与github上创建的远程库关联</p>
+<p>origin 是远程仓库的别名，以后可以使用这个短的别名代指长的url，这个是默认别名，也可以起自己喜欢的。</p>
+<p>②如果前面遇到一些问题，可能第二次remote的话会遇到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: remote origin already exists.</span><br></pre></td></tr></table></figure>
+<p>解决办法：  </p>
+<p>git remote rm origin </p>
+<p>git remote add origin <a href="https://github.com/XXX/xxx.git" target="_blank" rel="noopener">https://github.com/XXX/xxx.git</a> 即可</p>
+</li>
+<li><p>git push -u origin master</p>
+<p>①关于本命令</p>
+<p>把本地库所有内容推送到远程库上</p>
+<p>第一次加 -u</p>
+<p>之后只要 git push origin master</p>
+<p>②可能会遇到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">To https://github.com/xxx/xxx.git</span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;https://github.com/xxx/xxx.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
+<p>出现这个问题的其中一个原因就是在远程创建仓库的时候，勾选了Initialize  this repository with a README这项，导致远程仓库不为空。</p>
+<p>解决办法：先将远程仓库的内容合并到本地，然后再上传，命令如下： </p>
+<ol>
+<li>git pull –rebase origin master</li>
+<li>git push -u origin master</li>
+</ol>
+</li>
+</ol>
+<p>   （被大佬姐姐强行拷问rebase含义，拔苗助长，萌新不应该这么早接触这个命令吧捂脸</p>
+<p>   rebase简介：</p>
+<p>   <strong><em>\</em>git pull –rebase**</strong></p>
+<ol>
+<li>把本地 repo. 从上次 pull 之后的变更暂存</li>
+<li>恢复到上次 pull 时的状态</li>
+<li>合并远端的变更到本地</li>
+<li><p>最后再合并刚刚暂存下來的本地变更</p>
+<p>就是你本地的工作仓库的默认分支是master，origin/master是远程默认分支，本地和远程关联，由于远程有一个readme，相当于修改了远程分支，导致本地和远程不一致，这时，git pull –rebase origin master，把本地变更暂存，合并远端的变更（也就是 readme文件）到本地，再合并刚刚暂存的本地变更</p>
+</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p> <a href="https://blog.csdn.net/JK198310/article/details/37881033" target="_blank" rel="noopener">https://blog.csdn.net/JK198310/article/details/37881033</a>  git rebase merge 区别 </p>
+<p><a href="https://blog.csdn.net/weixin_30954607/article/details/98890341" target="_blank" rel="noopener">https://blog.csdn.net/weixin_30954607/article/details/98890341</a> git –rebase 实现的具体过程</p>
+<p> <a href="https://blog.csdn.net/u013262534/article/details/81383058" target="_blank" rel="noopener">https://blog.csdn.net/u013262534/article/details/81383058</a>  git rebase 不同情况下的合并</p>
+<p>(e.g.) 有一条代码线master线，同时有条新需求开发线dev线。master线从B开出分支dev线后，一直在做bug修复（C,D）。如下图： </p>
+<p>​    E F G  （dev）</p>
+<p>A B C D    (master)</p>
+<p> 此时，dev线需要合并master线修复的bug，以免重复开发。那我们可以用到git rebase命令。 </p>
+<p> git rebase –onto master dev，成功后，dev线就会合并C和D提交的记录。 </p>
+<p>​        EFG (dev)</p>
+<p>ABCD       (master)</p>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -397,29 +497,29 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/tags/随笔/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2020/02/07/2020-02-07git 使用笔记/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
 		<li class="">
-                    <a href="/tags/随笔/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2020/02/07/2020-02-07git 使用笔记/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 <li class="">
-                    <a href="/tags/随笔/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2020/02/07/2020-02-07git 使用笔记/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/随笔/" style="font-size: 10.873297377228655px;" class="tag-cloud-link">随笔</a>
+    <a href="/tags/随笔/" style="font-size: 17.437544183590767px;" class="tag-cloud-link">随笔</a>
     
-    <a href="/tags/Problem-Solution/" style="font-size: 11.56208357746336px;" class="tag-cloud-link">Problem&amp;Solution</a>
+    <a href="/tags/Problem-Solution/" style="font-size: 15.484486552208935px;" class="tag-cloud-link">Problem&amp;Solution</a>
     
-    <a href="/tags/读书笔记/" style="font-size: 17.341145034320114px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/读书笔记/" style="font-size: 9.937098997682632px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/论文/" style="font-size: 10.327885220366902px;" class="tag-cloud-link">论文</a>
+    <a href="/tags/论文/" style="font-size: 19.62571118173641px;" class="tag-cloud-link">论文</a>
     
-    <a href="/tags/Linux内核/" style="font-size: 8.826430226467078px;" class="tag-cloud-link">Linux内核</a>
+    <a href="/tags/Linux内核/" style="font-size: 10.999048092735457px;" class="tag-cloud-link">Linux内核</a>
     
-    <a href="/tags/缓冲区溢出-实验/" style="font-size: 12.027856381575521px;" class="tag-cloud-link">缓冲区溢出 实验</a>
+    <a href="/tags/缓冲区溢出-实验/" style="font-size: 18.55271563827288px;" class="tag-cloud-link">缓冲区溢出 实验</a>
     
 </div>
 		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
