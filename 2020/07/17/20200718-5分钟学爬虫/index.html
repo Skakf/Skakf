@@ -12,7 +12,7 @@
     
     
     
-    <title>5分钟——8行代码写爬虫 | Skakf&#39;s blog</title>
+    <title>5分钟—8行代码写爬虫 | Skakf&#39;s blog</title>
     <link href=”http://skakf.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -167,19 +167,19 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/读书笔记/">读书笔记</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/Problem-Solution/">Problem&amp;Solution</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/论文/">论文</a>
+                            <a href="/tags/Linux内核/">Linux内核</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/爬虫/">爬虫</a>
+                            <a href="/tags/读书笔记/">读书笔记</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/论文/">论文</a>
                         </li>
                         
                         
@@ -215,13 +215,13 @@
         <i class="fa fa-home"></i>
         <a href="http://skakf.github.io">Skakf&#39;s blog</a>
         >
-        <span>5分钟——8行代码写爬虫</span>
+        <span>5分钟—8行代码写爬虫</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
+                <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟—8行代码写爬虫</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -248,7 +248,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟—8行代码写爬虫</a>
                 </h4>
             </div>
             <p>
@@ -271,9 +271,9 @@
         <p>（ emm, 大神5分钟，小白1小时  （小声皮(●’◡’●)/)</p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>爬取豆瓣电影-一周口碑排行榜</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> html</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://movie.douban.com/'</span></span><br><span class="line">headers = &#123;<span class="string">'Referer'</span>:<span class="string">'https://movie.douban.com/'</span>,<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; xxx) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/xxx Safari/537.36'</span>&#125;</span><br><span class="line"><span class="comment">#headers要根据自己的浏览器来配置</span></span><br><span class="line"></span><br><span class="line">page = requests.get(url, headers=headers)</span><br><span class="line">tree = html.fromstring(page.text)</span><br><span class="line">result = tree.xpath(<span class="string">'//td[@class="title"]//a/text()'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#print(page.text)</span></span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1594921126087.png" alt="1594921126087"></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="/image/5min/1.png" alt="1594921126087"></p>
 <p>爬到了豆瓣电影页面“一周口碑榜”</p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1595048198449.png" alt="1595048198449"></p>
+<p><img src="/image/5min/2.png" alt="1595048198449"></p>
 <hr>
 <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>Windows + python3.8</p>
 <p>刚开始有一些需要导入的库，如果以前没有下载过，要先打开cmd下载</p>
@@ -291,7 +291,7 @@
 <li><p>打开需要爬取的网页，按 F12，打开开发者工具</p>
 </li>
 <li><p>点左上角小箭头，此时鼠标选中网页各个模块（右键-检查），调试代码会自动跳转到相应的地方，找到要爬的部分  </p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1595048786577.png" alt="1595048786577"></p>
+<p><img src="/image/5min/3.png" alt="1595048786577"></p>
 <p>看到这一行，和关键代码有很多相似的地方。原理如下：</p>
 <p>‘//td[@class=”title”]//a/text()’</p>
 <p>1）//td    : 相当于指定大目录</p>
@@ -302,7 +302,7 @@
 </li>
 </ol>
 <h2 id="报错-调试"><a href="#报错-调试" class="headerlink" title="报错+调试"></a>报错+调试</h2><p>最开始，由于代码缺少headers行，导致如下报错：</p>
-<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1594921221542.png" alt="1594921221542"></p>
+<p><img src="/image/5min/4.png" alt="1594921221542"></p>
 <p>调试过程，注释掉result行，print(page.text) ，response 418 —— 说明请求出错</p>
 <p>后来发现需要添加 headers</p>
 <h4 id="如何找到-headers"><a href="#如何找到-headers" class="headerlink" title="如何找到 headers"></a>如何找到 headers</h4><ol>
@@ -387,7 +387,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟—8行代码写爬虫</a>
                 </span>
             </li>
             
@@ -457,31 +457,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/16/2018-11-24-0day/">《0day漏洞分析》</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/09/17/2018-09-17-vmware_tips/">vmware-tips</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/03/16/2019-03-16-虚拟化攻防_相关论文_阅读笔记/">虚拟化攻防-相关论文-阅读笔记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/02/07/git/">git使用笔记</a>
                 </span>
             </li>
             
@@ -493,7 +469,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2019/03/16/2018-11-24-0day/">《0day漏洞分析》</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/16/2019-03-16-虚拟化攻防_相关论文_阅读笔记/">虚拟化攻防-相关论文-阅读笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2018/12/07/2018-12-07-bof/">入门-缓冲区溢出与利用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2020/02/07/git/">git使用笔记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟—8行代码写爬虫</a>
                 </span>
             </li>
             
@@ -518,21 +518,21 @@
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/随笔/" style="font-size: 8.115598172279231px;" class="tag-cloud-link">随笔</a>
+    <a href="/tags/随笔/" style="font-size: 10.109536104779671px;" class="tag-cloud-link">随笔</a>
     
-    <a href="/tags/读书笔记/" style="font-size: 14.187970343089408px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/Problem-Solution/" style="font-size: 14.509989969829887px;" class="tag-cloud-link">Problem&amp;Solution</a>
     
-    <a href="/tags/Problem-Solution/" style="font-size: 12.771275236972759px;" class="tag-cloud-link">Problem&amp;Solution</a>
+    <a href="/tags/Linux内核/" style="font-size: 14.618588474316109px;" class="tag-cloud-link">Linux内核</a>
     
-    <a href="/tags/论文/" style="font-size: 15.383318233755082px;" class="tag-cloud-link">论文</a>
+    <a href="/tags/读书笔记/" style="font-size: 16.228130667416618px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/爬虫/" style="font-size: 18.362129276544486px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/论文/" style="font-size: 19.80607509805759px;" class="tag-cloud-link">论文</a>
     
-    <a href="/tags/git/" style="font-size: 9.383730689880242px;" class="tag-cloud-link">git</a>
+    <a href="/tags/缓冲区溢出-实验/" style="font-size: 19.189727404146883px;" class="tag-cloud-link">缓冲区溢出 实验</a>
     
-    <a href="/tags/Linux内核/" style="font-size: 10.954755796245866px;" class="tag-cloud-link">Linux内核</a>
+    <a href="/tags/git/" style="font-size: 18.241352032790182px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/缓冲区溢出-实验/" style="font-size: 16.073931877421348px;" class="tag-cloud-link">缓冲区溢出 实验</a>
+    <a href="/tags/爬虫/" style="font-size: 17.51628716822644px;" class="tag-cloud-link">爬虫</a>
     
 </div>
 		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
