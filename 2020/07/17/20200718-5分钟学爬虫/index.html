@@ -12,7 +12,7 @@
     
     
     
-    <title>archive_a | Skakf&#39;s blog</title>
+    <title>5分钟——8行代码写爬虫 | Skakf&#39;s blog</title>
     <link href=”http://skakf.github.io“ rel=”prefetch” />
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -122,7 +122,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -209,19 +209,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://skakf.github.io">Skakf&#39;s blog</a>
         >
-        <span>归档</span>
+        <span>5分钟——8行代码写爬虫</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/爬虫/">爬虫</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2020-07-17
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -229,65 +248,88 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2020-07-17
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/爬虫/">爬虫</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2020年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2020/07/17/20200718-5分钟学爬虫/">5分钟——8行代码写爬虫</a>
-                        <br>
-            
-             
-                        <a href="/2020/02/07/git/">git使用笔记</a>
-                        <br>
-            
-             
-                        </div>
-                    <h1 style="font-size: 24px; margin-top: 40px;">2019年</h1>
-                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-                 
-             
-                        <a href="/2019/03/16/2019-03-16-虚拟化攻防_相关论文_阅读笔记/">虚拟化攻防-相关论文-阅读笔记</a>
-                        <br>
-            
-             
-                        <a href="/2019/03/16/2018-11-24-0day/">《0day漏洞分析》</a>
-                        <br>
-            
-             
-                        </div>
-                    <h1 style="font-size: 24px; margin-top: 40px;">2018年</h1>
-                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-                 
-             
-                        <a href="/2018/12/07/2018-12-07-bof/">入门-缓冲区溢出与利用</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/21/2018-09-21-Linux0.11_debug_with_qemu/">Ubuntu14.04下，利用QEMU+gdb调试Linux0.11内核</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/17/2018-09-17-vmware_tips/">vmware-tips</a>
-                        <br>
-            
-             
-                        <a href="/2018/09/16/2018-09-16-萌新入坑/">萌新入坑</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <p>（ emm, 大神5分钟，小白1小时  （小声皮(●’◡’●)/)</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>爬取豆瓣电影-一周口碑排行榜</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> html</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://movie.douban.com/'</span></span><br><span class="line">headers = &#123;<span class="string">'Referer'</span>:<span class="string">'https://movie.douban.com/'</span>,<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; xxx) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/xxx Safari/537.36'</span>&#125;</span><br><span class="line"><span class="comment">#headers要根据自己的浏览器来配置</span></span><br><span class="line"></span><br><span class="line">page = requests.get(url, headers=headers)</span><br><span class="line">tree = html.fromstring(page.text)</span><br><span class="line">result = tree.xpath(<span class="string">'//td[@class="title"]//a/text()'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#print(page.text)</span></span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1594921126087.png" alt="1594921126087"></p>
+<p>爬到了豆瓣电影页面“一周口碑榜”</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1595048198449.png" alt="1595048198449"></p>
+<hr>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>Windows + python3.8</p>
+<p>刚开始有一些需要导入的库，如果以前没有下载过，要先打开cmd下载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">pip install lxml</span><br></pre></td></tr></table></figure>
+<h2 id="原理-步骤"><a href="#原理-步骤" class="headerlink" title="原理+步骤"></a>原理+步骤</h2><p>爬虫要点：</p>
+<ol>
+<li><p>爬虫的网址  （douban.movie）</p>
+</li>
+<li><p>需要爬取的内容和数据  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = tree.xpath(<span class="string">'//td[@class="title"]//a/text()'</span>)</span><br></pre></td></tr></table></figure>
+<p>这行也是关键的爬取代码</p>
+</li>
+</ol>
+<h4 id="如何找到这部分？"><a href="#如何找到这部分？" class="headerlink" title="如何找到这部分？"></a>如何找到这部分？</h4><ol>
+<li><p>打开需要爬取的网页，按 F12，打开开发者工具</p>
+</li>
+<li><p>点左上角小箭头，此时鼠标选中网页各个模块（右键-检查），调试代码会自动跳转到相应的地方，找到要爬的部分  </p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1595048786577.png" alt="1595048786577"></p>
+<p>看到这一行，和关键代码有很多相似的地方。原理如下：</p>
+<p>‘//td[@class=”title”]//a/text()’</p>
+<p>1）//td    : 相当于指定大目录</p>
+<p>2）[@class=”title”]  : 指定小目录</p>
+<p>3）//a    : 最小的目录</p>
+<p>4）/text()   :  提取的数据</p>
+<p>（就是按照网页的结构，一层层找到需要的爬取的数据所在的路径）</p>
+</li>
+</ol>
+<h2 id="报错-调试"><a href="#报错-调试" class="headerlink" title="报错+调试"></a>报错+调试</h2><p>最开始，由于代码缺少headers行，导致如下报错：</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\1594921221542.png" alt="1594921221542"></p>
+<p>调试过程，注释掉result行，print(page.text) ，response 418 —— 说明请求出错</p>
+<p>后来发现需要添加 headers</p>
+<h4 id="如何找到-headers"><a href="#如何找到-headers" class="headerlink" title="如何找到 headers"></a>如何找到 headers</h4><ol>
+<li>F12开发者工具，Network-显示的request里随便点开一个</li>
+<li>就会显示Headers，往下拉，找到User-Agent</li>
+<li>把User-Agent 的内容copy到headers里</li>
+</ol>
+<p>再运行，request 200，成功啦！</p>
+<hr>
+<h3 id="补充小知识点：http-状态码"><a href="#补充小知识点：http-状态码" class="headerlink" title="补充小知识点：http 状态码"></a>补充小知识点：http 状态码</h3><p>1xx - 表示临时响应并需要请求者继续执行操作的状态代码 </p>
+<p>2xx - 请求成功  (200 -  表示成功处理了请求，一般情况下都是返回此状态码)</p>
+<p>3xx - 重定向代码 </p>
+<p>4xx - 请求出错</p>
+<p>5xx - 不常见，但也表示请求失败</p>
+<p>详情参见 <a href="https://www.cnblogs.com/cjwxf/p/6186287.html" target="_blank" rel="noopener">https://www.cnblogs.com/cjwxf/p/6186287.html</a> </p>
+<p>（唔，有关 418 据说是个彩蛋： I am a teapot）</p>
+<hr>
+<p>想学习爬虫可以了解：xpath /  scarpy</p>
+<h3 id="致谢："><a href="#致谢：" class="headerlink" title="致谢："></a>致谢：</h3><p>hhh在本文最后要十分感谢我<strong>聪明可爱又温柔有耐心的大佬姐姐</strong>，（姐姐的官方名号还没定好，一定要想一个响当当的（lil tea小茶老师这种根本体现不出姐姐的威武鸭）</p>
+<p>啊，感恩的心，感恩姐姐深夜远程指导，共同学习，共同进步~</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>原实验： <a href="https://blog.csdn.net/csqazwsxedc/article/details/68498842" target="_blank" rel="noopener">https://blog.csdn.net/csqazwsxedc/article/details/68498842</a> </p>
+<p>解决报错：<a href="https://blog.csdn.net/weixin_43144769/article/details/105715728?utm_medium=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43144769/article/details/105715728?utm_medium=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase</a></p>
+
     </div>
 </article>
+
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -464,33 +506,33 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/archives/2018/12/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
 		<li class="">
-                    <a href="/archives/2018/12/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 <li class="">
-                    <a href="/archives/2018/12/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2020/07/17/20200718-5分钟学爬虫/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/随笔/" style="font-size: 11.96329634802229px;" class="tag-cloud-link">随笔</a>
+    <a href="/tags/随笔/" style="font-size: 8.115598172279231px;" class="tag-cloud-link">随笔</a>
     
-    <a href="/tags/读书笔记/" style="font-size: 12.821531310579834px;" class="tag-cloud-link">读书笔记</a>
+    <a href="/tags/读书笔记/" style="font-size: 14.187970343089408px;" class="tag-cloud-link">读书笔记</a>
     
-    <a href="/tags/Problem-Solution/" style="font-size: 15.46348108827434px;" class="tag-cloud-link">Problem&amp;Solution</a>
+    <a href="/tags/Problem-Solution/" style="font-size: 12.771275236972759px;" class="tag-cloud-link">Problem&amp;Solution</a>
     
-    <a href="/tags/论文/" style="font-size: 17.2944986175831px;" class="tag-cloud-link">论文</a>
+    <a href="/tags/论文/" style="font-size: 15.383318233755082px;" class="tag-cloud-link">论文</a>
     
-    <a href="/tags/爬虫/" style="font-size: 13.765426324078872px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/爬虫/" style="font-size: 18.362129276544486px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/git/" style="font-size: 10.468428401791556px;" class="tag-cloud-link">git</a>
+    <a href="/tags/git/" style="font-size: 9.383730689880242px;" class="tag-cloud-link">git</a>
     
-    <a href="/tags/Linux内核/" style="font-size: 13.664330124681586px;" class="tag-cloud-link">Linux内核</a>
+    <a href="/tags/Linux内核/" style="font-size: 10.954755796245866px;" class="tag-cloud-link">Linux内核</a>
     
-    <a href="/tags/缓冲区溢出-实验/" style="font-size: 10.058491931688216px;" class="tag-cloud-link">缓冲区溢出 实验</a>
+    <a href="/tags/缓冲区溢出-实验/" style="font-size: 16.073931877421348px;" class="tag-cloud-link">缓冲区溢出 实验</a>
     
 </div>
 		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
